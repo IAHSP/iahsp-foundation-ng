@@ -10,12 +10,14 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { PageFrontComponent } from './page-front/page-front.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PageFrontComponent
   ],
   imports: [
     BrowserModule,

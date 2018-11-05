@@ -1,1 +1,182 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  color: #2E363F;
+  background-color: #f1f2f7;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 23px;
+  margin: 0;
+  padding: 0 !important;
+}
+
+header {
+  &#topHead {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    z-index: 101;
+    border-bottom: solid 1px #eee;
+
+
+
+
+    a {
+      font-size: 13px;
+      padding-right: 10px;
+    }
+
+    &.color {
+      color: #fff;
+      background-color: #EAA824;
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+
+  &#topNav {
+    background: #fff;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    border-bottom: #F4F5F7 1px solid;
+    box-shadow: #eee 0 0 8px;
+
+
+    a.logo {
+    color: #333;
+    text-decoration: none;
+    font-size: 35px;
+    display: inline-block;
+    height: 60px;
+    line-height: 50px;
+    font-weight: 600;
+    letter-spacing: -2px;
+    }
+    &.topHead {
+      top: 40px;
+    }
+    div.nav-main-collapse {
+      z-index: 300;
+    }
+
+
+    nav ul.nav-main {
+
+      li a {
+        font-style: normal;
+        line-height: 20px;
+        color: #9C9C9C;
+        font-weight: 100;
+        position: relative;
+        font-size: 1.1em;
+        padding: 0px 15px;
+        height: 60px;
+        line-height: 60px;
+        display: block;
+      }
+    }
+  }
+
+  .nav-pulls li {
+    float: left;
+  }
+  
+  
+
+  
+  
+}
+
+#wrapper {
+  padding-top: 111px;
+}
+
+footer {
+  display: block;
+  color: #87919F;
+  font-size: 13px;
+  overflow: hidden;
+
+  p {
+    line-height: 18px;
+  }
+
+  .footer-bar {
+    background: #292f38;
+    display: block;
+    text-transform: uppercase;
+    position: relative;
+
+    .copyright {
+      display: inline-block;
+      padding: 20px 0;
+    }
+
+    .toTop {
+      position: absolute;
+      right: 0;
+      padding: 20px 0;
+      padding-left: 70px;
+      width: 50%;
+      display: inline-block;
+      float: right;
+      text-align: center;
+      border-left: #403E44 1px dashed;
+    }
+  }
+}
+
+
+.list-inline {
+  padding-left: 0;
+  margin-left: -5px;
+  list-style: none;
+
+  & > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+a.social {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  line-height: 38px;
+  font-size: 20px;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  margin: 10px 1px;
+  text-decoration: none;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+
+  &.rounded {
+    width: 35px;
+    height: 35px;
+    line-height: 37px;
+  }
+}
+
+#goldaddress {
+  color: gold;
+}
+
+.rounded {}
+
+.padding-footer {
+  padding: 30px 0;
+}
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}

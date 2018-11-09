@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AlertModule } from 'ngx-bootstrap';
+import { AlertModule, ModalModule } from 'ngx-bootstrap';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -23,6 +23,7 @@ import { PageFrontComponent } from './page-front/page-front.component';
     BrowserModule,
     AppRoutingModule,
     AlertModule.forRoot(),
+    ModalModule.forRoot(),
     CollapseModule.forRoot(),
     AngularFontAwesomeModule
   ],

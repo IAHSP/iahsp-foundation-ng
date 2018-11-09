@@ -1,11 +1,67 @@
+<div class="modal fade" bsModal #staticModalCreditCard="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Donate by Credit Card</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModalCreditCard.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="form-cc">
+          <div class="form-group">
+            <label for="form-cc-name">Name</label>
+            <input type="text" class="form-control" id="form-cc-name" aria-describedby="form-cc-name-help" placeholder="name">
+            <small id="form-cc-name-help" class="form-text text-muted"></small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" bsModal #staticModalCheck="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Check</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModalCheck.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This is static modal, backdrop click will not close it.
+        Click <b>&times;</b> to close modal.
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" bsModal #staticModalGoodsServices="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Goods/Services</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModalGoodsServices.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This is static modal, backdrop click will not close it.
+        Click <b>&times;</b> to close modal.
+      </div>
+    </div>
+  </div>
+</div>
 <div class="hero-image">
   <div class="container">
     <div class="row">
       <div class="col-sm">
-        <div class="hero-text">
-          <h1>IAHSP Foundation</h1>
-          <p>Serving local communities through the gift of Home Staging.</p>
-        </div>
+        <!--<div class="hero-text">-->
+          <!--<h1>IAHSP Foundation</h1>-->
+          <!--<p>Serving local communities through the gift of Home Staging.</p>-->
+        <!--</div>-->
       </div>
     </div>
   </div>
@@ -16,7 +72,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm">
+    <div class="col-md order-2">
       <div class="content" >
         <p>The <strong>IAHSP Foundation, Inc.</strong> is dedicated to serving those in need in our communities throughout the United States and Canada through the gift and magic of ASP Home Staging.  Our goal is to enrich the lives of those in need around us, whether they are individuals, organizations or institutions.</p>
         <p>With the help of your donations we provide scholarships or sponsorships and work hard to assist those that need us to help them achieve their goals through Home Staging. We Stage<sup>®</sup> their spaces including many times painting, bringing in furniture, de-cluttering, cleaning, and literally doing all we can to improve the environment of those in need and to lift people’s spirits as well.</p>
@@ -31,13 +87,13 @@
         </p>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-md-5 col-lg-4 order-md-3 order-lg-3 ">
       <aside>
         <div class="button-holder">
           <ul>
-            <li><button class="btn btn-primary">Donate By Credit Card</button></li>
-            <li><button class="btn btn-success">Donate By Check</button></li>
-            <li><button class="btn btn-danger">Donate By Goods/Services</button></li>
+            <li><button (click)="staticModalCreditCard.show()" class="btn btn-primary">Donate By Credit Card</button></li>
+            <li><button (click)="staticModalCheck.show()" class="btn btn-success">Donate By Check</button></li>
+            <li><button (click)="staticModalGoodsServices.show()" class="btn btn-danger">Donate By Goods/Services</button></li>
           </ul>
         </div>
       </aside>

@@ -11,13 +11,18 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { PageFrontComponent } from './page-front/page-front.component';
+import { FormAllComponent } from './page-front/form-all/form-all.component';
+import { StaticModalComponent, ModalButtonComponent } from './page-front/static-modal/static-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    PageFrontComponent
+    PageFrontComponent,
+    FormAllComponent,
+    StaticModalComponent,
+    ModalButtonComponent
   ],
   imports: [
     BrowserModule,

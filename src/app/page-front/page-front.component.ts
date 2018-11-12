@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StaticModalComponent, ModalButtonComponent } from './static-modal/static-modal.component';
 
 @Component({
   selector: 'app-page-front',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageFrontComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    //this.staticModalComponent = new StaticModalComponent;
+  }
 
   ngOnInit() {
   }

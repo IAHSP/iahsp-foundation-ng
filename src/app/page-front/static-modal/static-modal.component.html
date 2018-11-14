@@ -1,55 +1,14 @@
-<div class="modal fade" bsModal #staticModalCreditCard="bs-modal" [config]="{backdrop: 'static'}"
-     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Donate by Credit Card</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModalCreditCard.hide()">
+        <h4 class="modal-title pull-left">{{title}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form id="form-cc">
-          <div class="form-group">
-            <label for="form-cc-name">Name</label>
-            <input type="text" class="form-control" id="form-cc-name" aria-describedby="form-cc-name-help" placeholder="name">
-            <small id="form-cc-name-help" class="form-text text-muted"></small>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" bsModal #staticModalCheck="bs-modal" [config]="{backdrop: 'static'}"
-     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">Check</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModalCheck.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        This is static modal, backdrop click will not close it.
-        Click <b>&times;</b> to close modal.
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" bsModal #staticModalGoodsServices="bs-modal" [config]="{backdrop: 'static'}"
-     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">Goods/Services</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModalGoodsServices.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        This is static modal, backdrop click will not close it.
-        Click <b>&times;</b> to close modal.
+        <ng-content></ng-content>
       </div>
     </div>
   </div>

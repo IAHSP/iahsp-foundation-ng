@@ -1,4 +1,12 @@
-<app-static-modal bsModal #staticModalCreditCard></app-static-modal>
+<app-static-modal #modalCC title="Donate by Credit Card">
+  This is my CreditCard Modal
+</app-static-modal>
+<app-static-modal #modalCK title="Donate by Check">
+  This is my Check Modal
+</app-static-modal>
+<app-static-modal #modalGS title="Donate by Goods/Services">
+  This is my Goods/Services Modal
+</app-static-modal>
 <div class="hero-image">
   <div class="container">
     <div class="row">
@@ -37,9 +45,9 @@
         <div class="button-holder">
           <ul>
             <!--<li><app-modal-button></app-modal-button></li>-->
-            <li><button (click)="staticModalCreditCard.show()" class="btn btn-primary">Donate By Credit Card</button></li>
-            <li><button (click)="staticModalCheck.show()" class="btn btn-success">Donate By Check</button></li>
-            <li><button (click)="staticModalGoodsServices.show()" class="btn btn-danger">Donate By Goods/Services</button></li>
+            <li><button (click)="modalCC.showModal()" class="btn btn-primary">Donate By Credit Card</button></li>
+            <li><button (click)="modalCK.showModal()" class="btn btn-success">Donate By Check</button></li>
+            <li><button (click)="modalGS.showModal()" class="btn btn-danger">Donate By Goods/Services</button></li>
           </ul>
         </div>
       </aside>

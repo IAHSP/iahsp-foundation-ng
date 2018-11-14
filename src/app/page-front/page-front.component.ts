@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StaticModalComponent, ModalButtonComponent } from './static-modal/static-modal.component';
+import { StaticModalComponent } from './static-modal/static-modal.component';
 
 @Component({
   selector: 'app-page-front',

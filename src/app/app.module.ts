@@ -12,7 +12,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { PageFrontComponent } from './page-front/page-front.component';
 import { FormAllComponent } from './page-front/form-all/form-all.component';
-import { StaticModalComponent, ModalButtonComponent } from './page-front/static-modal/static-modal.component';
+import { StaticModalComponent } from './page-front/static-modal/static-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +21,7 @@ import { StaticModalComponent, ModalButtonComponent } from './page-front/static-
     FooterComponent,
     PageFrontComponent,
     FormAllComponent,
-    StaticModalComponent,
-    ModalButtonComponent
+    StaticModalComponent
   ],
   imports: [
     BrowserModule,

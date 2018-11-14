@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 //import { ModalModule } from 'ngx-bootstrap';
 
 @Component({
@@ -8,27 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaticModalComponent implements OnInit {
   
-  public openModalWithComponent() {
-    /* this is how we open a Modal Component from another component */
-    //this.bsModalRef = this.modalService.show(ModalContentComponent);
-    staticModalCreditCard.show();
+  @Input()
+    title;
+
+  @ViewChild('staticModal') modal:ElementRef;
+
+  showModal() {
+    this.modal.show();
   }
 
-  constructor() { }
-
-
-  ngOnInit() {
-  }
-
-}
-
-@Component({
-  selector: 'app-modal-button',
-  templateUrl: './modal-button.component.html',
-  styleUrls: ['./modal-button.component.scss']
-})
-export class ModalButtonComponent implements OnInit {
-  
   constructor() { }
 
 

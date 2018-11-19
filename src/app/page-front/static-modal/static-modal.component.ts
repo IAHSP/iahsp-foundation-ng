@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 //import { ModalModule } from 'ngx-bootstrap';
 
 @Component({
@@ -11,7 +11,7 @@ export class StaticModalComponent implements OnInit {
   @Input()
     title;
 
-  @ViewChild('staticModal') modal:ElementRef;
+  @ViewChild('staticModal') modal:any;
 
   showModal() {
     this.modal.show();

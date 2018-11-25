@@ -1,4 +1,8 @@
-<div [hidden]="formtype != 'cc'">
+<!-- FORM -->
+<div>
+  <div class="headmessage">
+    <p>Your gift is greatly appreciated! All donations will be used wisely and prudently to help those in need through the power of Home Staging.</p>
+  </div>
   <form (ngSubmit)="onSubmit()" #myForm="ngForm">
     <div class="form-group">
       <label for="inputFirstName">First Name</label>
@@ -35,22 +39,42 @@
       <input type="text" class="form-control" id="inputzip" name="inputzip" required [(ngModel)]="model.zip" #zip="ngModel">
       <small id="requiredzip" [hidden]="zip.valid || zip.pristine" class="alert alert-danger">Zip / Postal Code is a required field.</small>
     </div>
-    <div class="form-group">
+    <!-- Only show on CC -->
+    <div class="form-group" [hidden]="formtype != 'cc'">
       <label for="inputphone">Phone</label>
       <input type="tel" class="form-control" id="inputphone" name="inputphone" required [(ngModel)]="model.phone" #phone="ngModel">
       <small id="requiredphone" [hidden]="phone.valid || phone.pristine" class="alert alert-danger">Phone is a required field.</small>
     </div>
+    <!-- /Only show on CC -->
     <div class="form-group">
+      <label for="inputcountry">Country</label>
+      <input type="text" class="form-control" id="inputcountry" name="inputcountry" required [(ngModel)]="model.country" #country="ngModel">
+      <small id="requiredcountry" [hidden]="country.valid || country.pristine" class="alert alert-danger">Country is a required field.</small>
+    </div>
+    <div class="form-group" [hidden]="formtype == 'gs'">
       <label for="selectChapter">IAHSP Chapter</label>
       <select class="form-control" id="selectChapter" required>
         <option *ngFor="let chapter of chapters" [value]="chapter">{{chapter}}</option>
       </select>
     </div>
+    <div class="form-group">
+      <label for="inputamount">
+        <span [hidden]="formtype == 'gs'">Amount</span>
+        <span [hidden]="formtype != 'gs'">Estimated Fair Market Value</span>
+      </label>
+      <input type="number" min="1" class="form-control" id="inputamount" name="inputamount" required [(ngModel)]="model.amount" #amount="ngModel">
+      <small id="requiredamount" [hidden]="amount.valid || amount.pristine" class="alert alert-danger">Amount is a required field.</small>
+    </div>
+    <div class="form-group">
+      <label for="inputmessage">
+        <span [hidden]="formtype == 'gs'">Message</span>
+        <span [hidden]="formtype != 'gs'">Detailed description of the donated item(s)</span>
+      </label>
+      <textarea class="form-control" id="inputmessage" name="inputmessage" [(ngModel)]="model.message" #message="ngModel"></textarea>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-iahsp">Send</button>
+    </div>
   </form>
 </div>
-<div [hidden]="formtype != 'ck'">
-  You chose the check
-</div>
-<div [hidden]="formtype != 'gs'">
-  You chose the goods/services
-</div>
+<!-- /FORM -->

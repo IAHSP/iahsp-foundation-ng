@@ -15,6 +15,8 @@ import { PageFrontComponent } from './page-front/page-front.component';
 import { FormAllComponent } from './page-front/form-all/form-all.component';
 import { StaticModalComponent } from './page-front/static-modal/static-modal.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,8 @@ import { StaticModalComponent } from './page-front/static-modal/static-modal.com
     AlertModule.forRoot(),
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

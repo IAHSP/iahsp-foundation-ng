@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 
+import { ReCaptchaModule } from 'angular2-recaptcha';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -34,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
     AngularFontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    ReCaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

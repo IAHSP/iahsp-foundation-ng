@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ReCaptchaComponent } from 'angular2-recaptcha';
 import { Form }    from './form';
 
 @Component({

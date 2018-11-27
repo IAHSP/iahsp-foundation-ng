@@ -16,7 +16,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  submitForm(formType: String, formData: String) {
+  submitForm(formType: String, formData: any) {
     let endPoint = "";
     if (formType == "gs") {
       //Goods / Services
@@ -25,6 +25,7 @@ export class DataService {
       //Credit and Check use the same endpoint
       endPoint = "/donate-credit";
     }
+    const strBody = JSON.stringify(formData);
     return this.http.post(this.formServer + endPoint, formData, httpOptions);
   }
 }

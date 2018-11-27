@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { ReCaptchaComponent } from 'angular2-recaptcha';
 import { Form }    from './form';
+import { DataService }    from '../../data.service';
+
 
 @Component({
   selector: 'app-form-all',
@@ -8,6 +10,8 @@ import { Form }    from './form';
   styleUrls: ['./form-all.component.scss']
 })
 export class FormAllComponent implements OnInit {
+  @ViewChild(ReCaptchaComponent) captcha: ReCaptchaComponent;
+  objUser;
 
   chapters = [
     "Greater Good",
@@ -28,21 +32,64 @@ export class FormAllComponent implements OnInit {
     "Wisconsin - SE Wisconsin (Accepts Remote ASP Members)"
   ];
 
-  model = new Form("", "", "", "", "", "", "", "", "", "", 0, "");
+  model = new Form("", "", "", "", "", "", "", "", "", "", 0, "", "");
 
   submitted = false;
 
   onSubmit() { this.submitted = true; }
 
   newForm() {
-    this.model = new Form("firstname", "lastname", "email", "address", "city", "state", "zip", "phone", "country", "chapter", 100.00, "message");
+    this.model = new Form("firstname", "lastname", "email", "address", "city", "state", "zip", "phone", "country", "chapter", 100.00, "message", "googleResp");
   }
 
 
   @Input()
     formtype;
 
-  constructor() {}
+  constructor(private dataService: DataService) {}
+  
+  // Send to REST endpoint.
+  mdSend() {
+    // Disable submit button and indicate "Please wait...".
+    document.getElementById("btnSubmit").textContent = "Please Wait...";
+    document.getElementById("btnSubmit").classList.remove("btn-primary");
+    document.getElementById("btnSubmit").classList.add("btn-info");
+    (<HTMLInputElement> document.getElementById("btnSubmit")).disabled = true;
+
+    // Attempt to send email.
+    this.dataService.submitForm(this.formtype, this.model)
+      .subscribe(response => {
+        if (response["status"] === "email sent") {
+          // Success
+          document.getElementById("btnSubmit").textContent = "Email Sent!";
+          document.getElementById("btnSubmit").classList.remove("btn-info");
+          document.getElementById("btnSubmit").classList.add("btn-success");
+          (<HTMLInputElement> document.getElementById("btnSubmit")).disabled = true;
+        } else {
+          // Something went wrong.
+          document.getElementById("btnSubmit").textContent = "Please try again.";
+          document.getElementById("btnSubmit").classList.remove("btn-info");
+          document.getElementById("btnSubmit").classList.add("btn-danger");
+          (<HTMLInputElement> document.getElementById("btnSubmit")).disabled = false;
+
+          // Reset captcha.
+          this.model.googleResponse = null;
+          this.captcha.reset();
+        } // else
+      }) // subscribe()
+    ; // sendEmailService.mdSendData()
+  } // mdSend()
+
+  // Handle the captcha response and save to objUserDetails.captchaResponse
+  mdCaptchaHandle(strResponse: string): void {
+    this.model.googleResponse = strResponse;
+  } // mdCaptchaHandle(response)
+
+  // Handles expired captchas.
+  mdCaptchaExpired(): void {
+    this.model.googleResponse = null;
+    this.captcha.reset();
+  }
 
   ngOnInit() {
   }

@@ -11,7 +11,8 @@ export class Form {
     public country: string,
     public chapter: string,
     public amount: number,
-    public message: string
+    public message: string,
+    public googleResponse: string
   ) {
   
   }

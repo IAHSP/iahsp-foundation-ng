@@ -73,7 +73,14 @@
       <textarea class="form-control" id="inputmessage" name="inputmessage" [(ngModel)]="model.message" #message="ngModel"></textarea>
     </div>
     <div class="form-group">
-      <button class="btn btn-iahsp">Send</button>
+      <re-captcha
+        (captchaResponse)="mdCaptchaHandle($event)"
+        (captchaExpired)="mdCaptchaExpired()"
+        site_key="6Lci7RsUAAAAAPHt32HGEiSlk5sAHBLSL-z2MqN-"
+      ></re-captcha>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-iahsp" id="btnSubmit" [disabled]="myForm.invalid || model.googleResponse == null" (click)="mdSend()">Send</button>
     </div>
   </form>
 </div>

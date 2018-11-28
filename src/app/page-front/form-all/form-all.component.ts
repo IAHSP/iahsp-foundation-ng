@@ -32,14 +32,14 @@ export class FormAllComponent implements OnInit {
     "Wisconsin - SE Wisconsin (Accepts Remote ASP Members)"
   ];
 
-  model = new Form("", "", "", "", "", "", "", "", "", "", 0, "", "");
+  model = new Form("", "", "", "", "", "", "", "", "", "", 0, "", null);
 
   submitted = false;
 
   onSubmit() { this.submitted = true; }
 
   newForm() {
-    this.model = new Form("firstname", "lastname", "email", "address", "city", "state", "zip", "phone", "country", "chapter", 100.00, "message", "googleResp");
+    this.model = new Form("firstname", "lastname", "email", "address", "city", "state", "zip", "phone", "country", "chapter", 100.00, "message", null);
   }
 
 

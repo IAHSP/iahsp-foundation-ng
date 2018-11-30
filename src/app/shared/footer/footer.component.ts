@@ -8,8 +8,11 @@ import { constStrImages } from "../data/globals";
 })
 export class FooterComponent implements OnInit {
   strImages: string = constStrImages;
+  strCurrentYear;
 
-  constructor() { }
+  constructor() {
+    this.strCurrentYear = new Date().getFullYear();
+  }
 
   ngOnInit() {
   }

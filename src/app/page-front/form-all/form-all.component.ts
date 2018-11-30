@@ -17,8 +17,9 @@ export class FormAllComponent implements OnInit {
     "Greater Good",
     "California - IAHSP Southern California (Accepts Remote ASP Members)",
     "California - NorCal (Accepts Remote ASP Members)",
-    "Canada - Toronto (Accepts Remote ASP Members)",
     "Colorado - Denver (Accepts Remote ASP Members)",
+    "Florida - Jacksonville",
+    "Florida - Orlando",
     "Florida - South Florida",
     "Georgia - Atlanta",
     "Illinois - Greater Chicago (Accepts Remote ASP Members)",
@@ -32,14 +33,14 @@ export class FormAllComponent implements OnInit {
     "Wisconsin - SE Wisconsin (Accepts Remote ASP Members)"
   ];
 
-  model = new Form("", "", "", "", "", "", "", "", "", "", 0, "", null);
+  model = new Form("", "", "", "", "", "", "", "", "", "", 0, "", "", null);
 
   submitted = false;
 
   onSubmit() { this.submitted = true; }
 
   newForm() {
-    this.model = new Form("firstname", "lastname", "email", "address", "city", "state", "zip", "phone", "country", "chapter", 100.00, "message", null);
+    this.model = new Form("firstname", "lastname", "email", "address", "city", "state", "zip", "phone", "country", "chapter", 100.00, "message","donationType", null);
   }
 
 
@@ -50,6 +51,23 @@ export class FormAllComponent implements OnInit {
   
   // Send to REST endpoint.
   mdSend() {
+    switch(this.formtype) {
+      case "cc": {
+        //statements;
+        this.model.donationType = "Credit Card";
+        break;
+      }
+      case "ck": {
+        //statements;
+        this.model.donationType = "Check";
+        break;
+      }
+      case "gs": {
+        //statements;
+        this.model.donationType = "Goods/Services";
+        break;
+      }
+    }
     // Disable submit button and indicate "Please wait...".
     document.getElementById("btnSubmit").textContent = "Please Wait...";
     document.getElementById("btnSubmit").classList.remove("btn-primary");

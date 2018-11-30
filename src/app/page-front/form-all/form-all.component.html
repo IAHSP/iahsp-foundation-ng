@@ -40,10 +40,10 @@
       <small id="requiredzip" [hidden]="zip.valid || zip.pristine" class="alert alert-danger">Zip / Postal Code is a required field.</small>
     </div>
     <!-- Only show on CC -->
-    <div class="form-group" [hidden]="formtype != 'cc'">
+    <div class="form-group">
       <label for="inputphone">Phone</label>
-      <input type="tel" class="form-control" id="inputphone" name="inputphone" required [(ngModel)]="model.address_phone" #phone="ngModel">
-      <small id="requiredphone" [hidden]="phone.valid || phone.pristine" class="alert alert-danger">Phone is a required field.</small>
+      <input type="tel" class="form-control" id="inputphone" name="inputphone" [required]="formtype == 'cc'" [(ngModel)]="model.address_phone" #phone="ngModel">
+      <!--<small id="requiredphone" [hidden]="phone.valid || phone.pristine" class="alert alert-danger">Phone is a required field.</small>-->
     </div>
     <!-- /Only show on CC -->
     <div class="form-group">
@@ -53,7 +53,7 @@
     </div>
     <div class="form-group" [hidden]="formtype == 'gs'">
       <label for="selectChapter">IAHSP Chapter</label>
-      <select class="form-control" id="selectChapter" required [(ngModel)]="model.chapter" name="selectChapter" #chapter="ngModel">
+      <select class="form-control" id="selectChapter" [required]="formtype != 'gs'" [(ngModel)]="model.chapter" name="selectChapter" #chapter="ngModel">
         <option *ngFor="let chapter of chapters" [value]="chapter">{{chapter}}</option>
       </select>
     </div>

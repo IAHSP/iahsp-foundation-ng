@@ -1,11 +1,5 @@
-<app-static-modal #modalCC title="Donate by Credit Card">
-  <app-form-all formtype="cc"></app-form-all>
-</app-static-modal>
-<app-static-modal #modalCK title="Donate by Check">
-  <app-form-all formtype="ck"></app-form-all>
-</app-static-modal>
-<app-static-modal #modalGS title="Donate by Goods/Services">
-  <app-form-all formtype="gs"></app-form-all>
+<app-static-modal #modalCC title="{{modalTitle}}">
+  <app-form-all formtype="{{currentFormType}}"></app-form-all>
 </app-static-modal>
 <div class="hero-image">
   <div class="container">
@@ -45,9 +39,9 @@
         <div class="button-holder">
           <ul>
             <!--<li><app-modal-button></app-modal-button></li>-->
-            <li><button (click)="modalCC.showModal()" class="btn btn-primary">Donate By Credit Card</button></li>
-            <li><button (click)="modalCK.showModal()" class="btn btn-success">Donate By Check</button></li>
-            <li><button (click)="modalGS.showModal()" class="btn btn-danger">Donate By Goods/Services</button></li>
+            <li><button (click)="modalCC.showModal();setModalText('cc');" class="btn btn-primary">Donate By Credit Card</button></li>
+            <li><button (click)="modalCC.showModal();setModalText('ck');" class="btn btn-success">Donate By Check</button></li>
+            <li><button (click)="modalCC.showModal();setModalText('gs');" class="btn btn-danger">Donate By Goods/Services</button></li>
           </ul>
         </div>
       </aside>

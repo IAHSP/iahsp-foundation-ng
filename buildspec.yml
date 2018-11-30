@@ -42,7 +42,7 @@ phases:
         - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_ID} --paths "/*"
         # Slack notification of completed post_build.
         - curl -k -g -X POST -d "payload={\"text\":\"Step 3/3 - Post build phase was completed successfully.\", \"channel\":\"#devops\", \"username\":\"AWS CodeBuild | ${DOMAIN}\", \"icon_emoji\":\":white_check_mark:\"}" $SHC_SLACK_HOOK
-    finally:
+        finally:
         # Slack notification.
         - curl -k -g -X POST -d "payload={\"text\":\"AWS CodeBuild finished.\", \"channel\":\"#devops\", \"username\":\"AWS CodeBuild | ${DOMAIN}\", \"icon_emoji\":\":white_check_mark:\"}" $SHC_SLACK_HOOK
 artifacts:

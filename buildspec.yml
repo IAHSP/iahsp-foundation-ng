@@ -1,0 +1,52 @@
+version: 0.2
+
+env:
+    variables:
+        S3_BUCKET: "iahspfoundation"
+        DOMAIN: "IAHSPFoundation.com"
+        BUILD_ENV: "prod"
+        CLOUDFRONT_ID: "?????"
+    parameter-store:
+        FIREBASE_TOKEN: "/StagedHomes/firebase_token_shc"
+        SHC_SLACK_HOOK: "/StagedHomes/slack_general_hook"
+            
+phases:
+    install:
+        commands:
+        - echo Installing source NPM dependencies...
+        # Need https driver.
+        - sudo apt-get update -y
+        - sudo apt-get install -y apt-transport-https
+        # Install Angular CLI
+        - npm install -g @angular/cli
+        # Install node dependancies.
+        - npm install
+        # Slack notification.
+        - curl -k -g -X POST -d "payload={\"text\":\"Step 1/3 - Install phase is completed.\", \"channel\":\"#devops\", \"username\":\"AWS CodeBuild | ${DOMAIN}\", \"icon_emoji\":\":white_check_mark:\"}" $SHC_SLACK_HOOK
+    build:
+        commands:
+        # Builds Angular application.
+        - echo Build started on `date`
+        - ng build --${BUILD_ENV}
+        # Slack notification.
+        - curl -k -g -X POST -d "payload={\"text\":\"Step 2/3 - Build phase is completed.\", \"channel\":\"#devops\", \"username\":\"AWS CodeBuild | ${DOMAIN}\", \"icon_emoji\":\":white_check_mark:\"}" $SHC_SLACK_HOOK
+    post_build:
+        commands:
+        # STEP: Clear S3 bucket.
+        - aws s3 rm s3://${S3_BUCKET} --recursive
+        - echo S3 bucket "${S3_BUCKET}" is cleared.
+        # STEP: Copy dist folder to S3 bucket.
+        - aws s3 cp dist s3://${S3_BUCKET} --recursive
+        # STEP: Clear CloudFront cache.
+        - aws configure set preview.cloudfront true
+        - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_ID} --paths "/*"
+        # Slack notification of completed post_build.
+        - curl -k -g -X POST -d "payload={\"text\":\"Step 3/3 - Post build phase was completed successfully.\", \"channel\":\"#devops\", \"username\":\"AWS CodeBuild | ${DOMAIN}\", \"icon_emoji\":\":white_check_mark:\"}" $SHC_SLACK_HOOK
+    finally:
+        # Slack notification.
+        - curl -k -g -X POST -d "payload={\"text\":\"AWS CodeBuild finished.\", \"channel\":\"#devops\", \"username\":\"AWS CodeBuild | ${DOMAIN}\", \"icon_emoji\":\":white_check_mark:\"}" $SHC_SLACK_HOOK
+artifacts:
+    files:
+        - '**/*'
+    discard-paths: yes
+    base-directory: 'dist*'

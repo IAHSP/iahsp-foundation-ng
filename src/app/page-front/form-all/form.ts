@@ -12,6 +12,7 @@ export class Form {
     public chapter: string,
     public amount: number,
     public message: string,
+    public donationType: string,
     public googleResponse: string
   ) {
   

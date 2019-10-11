@@ -17,7 +17,7 @@ phases:
         - sudo apt-get update -y
         - sudo apt-get install -y apt-transport-https
         # Install Angular CLI
-        - npm install -g @angular/cli
+        - npm install -g @angular/cli@~7.3.9
         # Install node dependancies.
         - npm install
         # Slack notification.
@@ -30,7 +30,7 @@ phases:
         - ng build --${BUILD_ENV}
         # Slack notification.
         - curl -k -g -X POST -d "payload={\"text\":\"Step 2/3 - Build phase is completed.\", \"channel\":\"#devops\", \"username\":\"AWS CodeBuild | ${DOMAIN}\", \"icon_emoji\":\":white_check_mark:\"}" $SHC_SLACK_HOOK
-        
+
     post_build:
         commands:
         # STEP: Clear S3 bucket.
